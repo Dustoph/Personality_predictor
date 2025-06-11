@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
-from sklearn.tree import export_graphviz
+from sklearn.tree import plot_tree
 from six import StringIO
 from IPython.display import Image
 import pydotplus
 
-data = pd.read_csv("personality_dataset.csv")
+data = pd.read_csv("/home/dustoph/person-app/personality_dataset.csv")
 df = pd.DataFrame(data)
 df.dropna(inplace= True)
 
@@ -40,11 +40,15 @@ clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
 print(accuracy_score(y_test, y_pred))
 
-dot_data = StringIO()
-export_graphviz(clf, out_file=dot_data, filled=True, rounded = True, special_characters=True, feature_names=X.columns, class_names=class_names)
-graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
-graph.write_png('Personality.png')
-Image(graph.create_png())
+# dot_data = StringIO()
+# export_graphviz(clf, out_file=dot_data, filled=True, rounded = True, special_characters=True, feature_names=X.columns, class_names=class_names)
+# graph = pydotplus.graph_from_dot_data(dot_data.getvalue())
+# graph.write_png('Personality.png')
+# Image(graph.create_png())
+
+fig = plt.figure(figsize=(20,10))
+plot_tree(clf, filled=True, feature_names=X.columns, class_names=class_names)
+st.pyplot(fig)
 
 
 import streamlit as st

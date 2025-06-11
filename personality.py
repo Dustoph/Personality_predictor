@@ -9,7 +9,8 @@ from six import StringIO
 from IPython.display import Image
 import pydotplus
 
-data = pd.read_csv("/home/dustoph/person-app/personality_dataset.csv")
+# data = pd.read_csv("/home/dustoph/person-app/personality_dataset.csv")
+data = pd.read_csv("personality_dataset.csv")
 df = pd.DataFrame(data)
 df.dropna(inplace= True)
 

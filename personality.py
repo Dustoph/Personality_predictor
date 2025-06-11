@@ -49,7 +49,7 @@ print(accuracy_score(y_test, y_pred))
 
 fig = plt.figure(figsize=(20,10))
 plot_tree(clf, filled=True, feature_names=X.columns, class_names=class_names)
-st.pyplot(fig)
+# st.pyplot(fig)
 
 
 import streamlit as st
